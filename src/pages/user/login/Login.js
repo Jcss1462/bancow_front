@@ -2,23 +2,26 @@ import React, { useState } from 'react';
 import './Login.css'; // Importar el archivo CSS
 import { login } from '../../../api/userApi';
 import { toast } from 'react-toastify';
+import { useAppDispatch } from '../../../context/AppSate';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useAppDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await  login({ email, password });
-      console.log(response);
-      const { token } = response.token;
-      localStorage.setItem('token', token); // Guardar el token
+    dispatch({ type: "SET_LOADING", payload: true });
+    try {  
+      await  login({ email, password },dispatch);
       //Redirigir a la lista de simulaciones
       window.location.href = '/simulations';
+      dispatch({ type: "SET_LOADING", payload: false });
     } catch (error) {
       console.error(error);
-      toast.error("Usuario o contraseña invalidos");
+      toast.error("Error al iniciar sesion:" +error);
+      dispatch({ type: "SET_LOADING", payload: false});
     }
   };
 

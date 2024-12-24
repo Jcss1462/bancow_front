@@ -1,15 +1,19 @@
 import React from 'react';
-import { CircleLoader } from 'react-spinners'; // Importar un tipo de spinner
+import { RingLoader } from 'react-spinners'; // Importar un tipo de spinner
 import './Loader.css'; // Estilo para el spinner
+import { useAppState } from '../../context/AppSate';
 
-const Loader = ({ loading }) => {
-  return (
-    loading && (
-      <div className="loader-overlay">
-        <CircleLoader color="#36d7b7" loading={loading} size={150} />
-      </div>
-    )
-  );
+const Loader = () => {
+
+    const { isLoading } = useAppState();
+
+    return (
+        isLoading && (
+            <div className="loader-overlay">
+                <RingLoader color="#36d7b7" loading={isLoading} size={150} />
+            </div>
+        )
+    );
 };
 
 export default Loader;

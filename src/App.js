@@ -7,6 +7,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
+import Loader from './components/Loader/Loder';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         </main>
         <Footer />
         <ToastContainer />
+        <Loader />
       </div>
     </Router>
   );
