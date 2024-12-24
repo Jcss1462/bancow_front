@@ -1,0 +1,32 @@
+/* Login.css */
+.login-container {
+    height: 100%;
+    background-color: rgb(33, 37, 41);
+    /* Fondo oscuro para toda la pantalla */
+}
+
+.card {
+    width: 30rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.btn-primary {
+    background-color: rgb(13, 110, 253);
+    border-color: rgb(13, 110, 253);
+}
+
+.register-link {
+    color: rgb(13, 110, 253);
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+h1,
+.register-link {
+    color: rgb(33, 37, 41);
+    /* Color oscuro para el texto */
+}
