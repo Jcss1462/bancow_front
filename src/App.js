@@ -6,6 +6,7 @@ import CreateSimulationForm from './pages/simulations/createSimulationForm/Creat
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ToastContainer />
       </div>
     </Router>
   );

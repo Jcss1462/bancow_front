@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './Login.css'; // Importar el archivo CSS
+import { login } from '../../../api/userApi';
+import { toast } from 'react-toastify';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -9,13 +10,15 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login', { email, password });
-      const { token } = response.data;
+      const response = await  login({ email, password });
+      console.log(response);
+      const { token } = response.token;
       localStorage.setItem('token', token); // Guardar el token
-      // Redirigir a la lista de simulaciones
+      //Redirigir a la lista de simulaciones
       window.location.href = '/simulations';
     } catch (error) {
       console.error(error);
+      toast.error("Usuario o contraseña invalidos");
     }
   };
 
@@ -23,7 +26,7 @@ function Login() {
     <div className="login-container d-flex justify-content-center align-items-center">
       <div className="card p-4 shadow-lg">
         <h1 className="text-center mb-4 text-black">Login</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e)=>handleSubmit(e)}>
           <div className="mb-3">
             <input
               type="email"
