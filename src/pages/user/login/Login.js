@@ -38,7 +38,7 @@ function Login() {
   return (
     <div className="login-container d-flex justify-content-center align-items-center">
       <div className="card p-4 shadow-lg">
-        <h1 className="text-center mb-4 text-black">Login</h1>
+        <h1 className="text-center mb-4 text-black tile">Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
             <input

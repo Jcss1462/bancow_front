@@ -42,7 +42,7 @@ function Register() {
     return (
         <div className="register-container d-flex justify-content-center align-items-center">
             <div className="card p-4 shadow-lg">
-                <h1 className="text-center mb-4 text-black">Registro</h1>
+                <h1 className="text-center mb-4 text-black tile">Registro</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Email */}
                     <div className="mb-3">

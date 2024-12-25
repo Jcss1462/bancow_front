@@ -2,6 +2,7 @@
 .login-container {
     height: 100%;
     background-color: rgb(33, 37, 41);
+    padding: 0px 30px;
     /* Fondo oscuro para toda la pantalla */
 }
 
@@ -9,6 +10,10 @@
     width: 30rem;
     border-radius: 1rem;
     background-color: white;
+}
+
+.tile{
+    font-size: 2.5rem;
 }
 
 .btn-primary {
