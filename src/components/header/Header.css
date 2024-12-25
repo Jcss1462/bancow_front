@@ -1,0 +1,141 @@
+/* Estilo general del header */
+.header {
+  background-color: #007bff;
+  /* Color de fondo azul */
+  color: white;
+  padding: 20px;
+  position: relative;
+  /* Asegura que el sidebar esté posicionado correctamente */
+  display: flex;
+}
+
+.container{
+  padding: 0px 30px;
+}
+
+/* Estilo para el nombre de la aplicación */
+.app-name {
+  font-size: 2.5rem;
+  /* Tamaño de la tipografía */
+  margin: 0;
+  color: white;
+}
+
+/* Estilo para los enlaces de navegación */
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  /* Espacio horizontal entre elementos */
+  list-style: none;
+  /* Elimina los puntos de las listas */
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  font-size: 1.25rem;
+  /* Aumenta el tamaño de la tipografía */
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  /* Transición suave para el cambio de color */
+}
+
+
+
+/* Cambiar color de los enlaces cuando el mouse está encima */
+.nav-item:hover {
+  color: #ffd700;
+  /* Cambiar el color a dorado */
+}
+
+/* Botón de menú (hamburguesa) */
+.menu-btn {
+  display: none;
+  /* Escondido en pantallas grandes */
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Estilo para el sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0; /* El panel se mantendrá en el borde derecho, pero fuera de la vista inicialmente */
+  width: 250px;
+  height: 100%;
+  background-color: #007bff;
+  transform: translateX(100%); /* Fuera de la vista */
+  transition: transform 0.3s ease-in-out; /* Animación suave para abrir y cerrar */
+  padding-top: 60px;
+  z-index: 1;
+  border-left: 1px solid white;
+}
+
+.sidebar.open {
+  transform: translateX(0); /* El panel se mueve a la vista */
+}
+
+.sidebar-links {
+  padding: 20px;
+}
+
+.sidebar-links li {
+  margin-bottom: 20px;
+}
+
+.sidebar-links .nav-item {
+  font-size: 1.25rem;
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-links .nav-item:hover {
+  color: #ffd700;
+}
+
+/* Botón para cerrar */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.close-btn:hover {
+  color: #ffd700;
+}
+
+
+/* Ajustes responsivos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 0;
+  }
+
+  .app-name {
+    font-size: 2rem;
+  }
+
+  .nav-item {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    display: none;
+    /* Escondemos las opciones de navegación en pantallas pequeñas */
+  }
+
+  .menu-btn {
+    display: block;
+    /* Mostramos el botón de menú */
+  }
+}

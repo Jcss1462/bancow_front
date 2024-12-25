@@ -21,7 +21,6 @@ const reducer = (state, action) => {
     case "LOGOUT":
       return {
         ...state,
-        isAuthenticated: false,
         email: null,
         token: null,
         idUsuario: null,
