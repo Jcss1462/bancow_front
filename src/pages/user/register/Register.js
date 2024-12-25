@@ -30,7 +30,7 @@ function Register() {
         } catch (error) {
             try {
                 const errormessage=error.response.data.split('at')[0];
-                toast.error(errormessage);
+                toast.error("Error al registrar usuario: "+errormessage);
                 dispatch({ type: "SET_LOADING", payload: false });
             } catch (error) {
                 toast.error("Error al registrar usuario");
