@@ -36,7 +36,7 @@ export const register = async (data) => {
       const response = await axios.post('/Usuario/register', data);
       return response.data; 
     } catch (error) {
-      console.error('Error al crear la simulación:', error);
+      console.error('Error al regiestrar el usuario:', error);
       throw error;
     }
 };

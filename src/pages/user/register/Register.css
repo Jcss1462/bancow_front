@@ -1,0 +1,30 @@
+/* RegisterForm.css */
+.register-container {
+    height: 100%;
+    background-color: rgb(33, 37, 41);
+  }
+  
+  .card {
+    width: 30rem;
+    border-radius: 1rem;
+    background-color: white;
+  }
+  
+  .btn-primary {
+    background-color: rgb(13, 110, 253);
+    border-color: rgb(13, 110, 253);
+  }
+  
+  .login-link {
+    color: rgb(13, 110, 253);
+    text-decoration: none;
+  }
+  
+  .login-link:hover {
+    text-decoration: underline;
+  }
+  
+  h1 {
+    color: rgb(33, 37, 41);
+  }
+  

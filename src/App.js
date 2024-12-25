@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import Loader from './components/Loader/Loder';
+import Register from './pages/user/register/Register';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/simulations" element={<ProtectedRoute><SimulationsList /></ProtectedRoute>} />
             <Route path="/simulation/:id" element={<ProtectedRoute><CreateSimulationForm /></ProtectedRoute>} />
           </Routes>
