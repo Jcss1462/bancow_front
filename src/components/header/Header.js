@@ -89,6 +89,9 @@ function Header() {
             ) : (
               <>
                 <li>
+                  <Link to="/simulations" className="nav-item" > <i class="bi bi-card-checklist"></i> Mis Simulaciones</Link>
+                </li>
+                <li>
                   <Link className="nav-item" onClick={handleLogout} >Cerrar Sesión</Link>
                 </li>
               </>
@@ -111,6 +114,9 @@ function Header() {
               </>
             ) : (
               <>
+                <li>
+                  <Link to="/simulations" className="nav-item" > <i class="bi bi-card-checklist"></i> Mis Simulaciones</Link>
+                </li>
                 <li>
                   <Link className="nav-item" onClick={handleLogout} >Cerrar Sesión</Link>
                 </li>
