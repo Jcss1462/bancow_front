@@ -3,11 +3,13 @@ import { useAppDispatch, useAppState } from '../../../context/AppSate';
 import { GetSimulationsListByMail } from '../../../api/simulationApi';
 import { toast } from 'react-toastify';
 import './SimulationsList.css';
+import { useNavigate } from 'react-router-dom';
 
 function SimulationsList() {
   const [simulations, setSimulations] = useState([]);
   const { email } = useAppState();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();  
 
   useEffect(() => {
     const fetchSimulations = async () => {
@@ -27,6 +29,11 @@ function SimulationsList() {
 
     fetchSimulations();
   }, [email, dispatch]);
+
+
+  const handleEditClick = (idSimulacion) => {
+    navigate(`/updateSimulation/${idSimulacion}`);
+  };
 
   return (
     <div className="container mx-auto">
@@ -57,7 +64,7 @@ function SimulationsList() {
                 <td>{sim.fechaFin}</td>
                 <td>{sim.tasa}</td>
                 <td className="ActionButtons">
-                  <button className="btn btn-warning">
+                  <button className="btn btn-warning" onClick={() => handleEditClick(sim.idSimulacion)} >
                     <i className="bi bi-pencil"></i>
                   </button>
                   <button className="btn btn-danger ms-2">

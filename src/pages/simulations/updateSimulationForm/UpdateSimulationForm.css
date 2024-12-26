@@ -1,0 +1,48 @@
+/* Contenedor principal del formulario */
+.update-simulation-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding: 6rem 30px;
+  }
+  
+  /* Botón para volver */
+  .back-button {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  /* Estilo de los campos del formulario */
+  form .form-label {
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  form .form-control,
+  form .form-select {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease;
+  }
+  
+  form .form-control:focus,
+  form .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+
+  /* Espaciado entre filas */
+  .row > .col-md-6 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Estilo para inputs deshabilitados */
+  form .form-control[disabled] {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+  
