@@ -72,7 +72,7 @@ function SimulationsList() {
 
   return (
     <div className="container mx-auto">
-      <h1 className="title text-center mb-4">Simulaciones</h1>
+      <h1 className="title text-center mb-4"><b>Simulaciones</b></h1>
 
       {simulations.length > 0 ? (
         <table className="table table-bordered table-striped table-hover text-center">

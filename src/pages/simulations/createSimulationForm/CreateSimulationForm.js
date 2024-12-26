@@ -122,6 +122,8 @@ const CreateSimulationForm = () => {
                             {...register("monto", {
                                 required: "El monto es obligatorio",
                                 valueAsNumber: true,
+                                validate: (value) =>
+                                  value > 0 || "El monto debe ser un número positivo",
                             })}
                         />
                         {errors.monto && (
