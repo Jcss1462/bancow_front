@@ -5,6 +5,7 @@ import './Register.css';
 import { UserRegister } from '../../../models/userRegister';
 import { register as registerApi } from '../../../api/userApi';
 import { useAppDispatch } from '../../../context/AppSate';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const {
@@ -13,6 +14,8 @@ function Register() {
         formState: { errors },
         reset,
     } = useForm();
+
+    const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
 
@@ -26,7 +29,7 @@ function Register() {
             toast.success('Usuario registrado exitosamente.');
             dispatch({ type: "SET_LOADING", payload: false });
             reset(); // Limpiar formulario
-            window.location.href = '/';
+            navigate("/");
         } catch (error) {
             try {
                 const errormessage=error.response.data.split('at')[0];
