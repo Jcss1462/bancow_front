@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import Loader from './components/Loader/Loder';
 import Register from './pages/user/register/Register';
 import UpdateSimulationForm from './pages/simulations/updateSimulationForm/UpdateSimulationForm';
+import CreateSimulationForm from './pages/simulations/createSimulationForm/CreateSimulationForm';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/simulations" element={<ProtectedRoute><SimulationsList /></ProtectedRoute>} />
             <Route path="/updateSimulation/:idSimulacion" element={<ProtectedRoute><UpdateSimulationForm /></ProtectedRoute>} />
+            <Route path="/createSimulation" element={<ProtectedRoute><CreateSimulationForm /></ProtectedRoute>} />
           </Routes>
         </main>
         <Footer />

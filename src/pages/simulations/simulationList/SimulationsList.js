@@ -35,6 +35,10 @@ function SimulationsList() {
     navigate(`/updateSimulation/${idSimulacion}`);
   };
 
+  const handleAddClick = () => {
+    navigate("/createSimulation");
+  };
+
   return (
     <div className="container mx-auto">
       <h1 className="title text-center mb-4">Simulaciones</h1>
@@ -84,6 +88,7 @@ function SimulationsList() {
       {/* Botón fijo con respecto a la aplicación */}
       <button
         className="btn btn-primary rounded-circle position-fixed"
+        onClick={() => handleAddClick()} 
         style={{ width: '60px', height: '60px', bottom: '100px', right: '40px' }}
       >
         <i className="bi bi-plus"></i>

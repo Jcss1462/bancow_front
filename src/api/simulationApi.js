@@ -28,7 +28,17 @@ export const UpdateSimulation = async (simulation) => {
     const response = await axios.put('/Simulacion/updateSimulation',simulation);
     return response.data; 
   } catch (error) {
-    console.error('Error al tratar de actualiza lasimulacion', error);
+    console.error('Error al tratar de actualiza la simulacion', error);
+    throw error;
+  }
+};
+
+export const CreateSimulation = async (simulation) => {
+  try {
+    const response = await axios.post('/Simulacion/createSimulation',simulation);
+    return response.data; 
+  } catch (error) {
+    console.error('Error al tratar de crear simulacion', error);
     throw error;
   }
 };
