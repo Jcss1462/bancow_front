@@ -42,3 +42,14 @@ export const CreateSimulation = async (simulation) => {
     throw error;
   }
 };
+
+
+export const DeleteSimulation = async (id) => {
+  try {
+    const response = await axios.delete('/Simulacion/deleteSimulation/'+id);
+    return response.data; 
+  } catch (error) {
+    console.error('Error al tratar de eliminar simulacion', error);
+    throw error;
+  }
+};

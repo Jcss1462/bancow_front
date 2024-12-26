@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppState } from '../../../context/AppSate';
-import { GetSimulationsListByMail } from '../../../api/simulationApi';
+import { DeleteSimulation, GetSimulationsListByMail } from '../../../api/simulationApi';
 import { toast } from 'react-toastify';
 import './SimulationsList.css';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ function SimulationsList() {
   const [simulations, setSimulations] = useState([]);
   const { email } = useAppState();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchSimulations = async () => {
@@ -31,12 +31,43 @@ function SimulationsList() {
   }, [email, dispatch]);
 
 
+  const getSimulationList = async () => {
+    if (!email) return;
+
+    dispatch({ type: "SET_LOADING", payload: true });
+    try {
+      const data = await GetSimulationsListByMail(email);
+      setSimulations(data);
+    } catch (error) {
+      const errormessage = error.response?.data?.split('at')[0] || "Error desconocido";
+      toast.error("Error al tratar de obtener las simulaciones: " + errormessage);
+    } finally {
+      dispatch({ type: "SET_LOADING", payload: false });
+    }
+  };
+
   const handleEditClick = (idSimulacion) => {
     navigate(`/updateSimulation/${idSimulacion}`);
   };
 
   const handleAddClick = () => {
     navigate("/createSimulation");
+  };
+
+  const handleDeleteClick = async (idSimulacion) => {
+
+    dispatch({ type: "SET_LOADING", payload: true });
+    try {
+      await DeleteSimulation(idSimulacion);
+      getSimulationList();
+      toast.success("Simulacion con id:" + idSimulacion+", eliminada exitozamente");
+
+    } catch (error) {
+      const errormessage = error.response?.data?.split('at')[0] || "Error desconocido";
+      toast.error("Error al tratar de eliminar las simulaciones: " + errormessage);
+    } finally {
+      dispatch({ type: "SET_LOADING", payload: false });
+    }
   };
 
   return (
@@ -66,12 +97,12 @@ function SimulationsList() {
                 <td>{sim.terminoPagoId}</td>
                 <td>{sim.fechaInicio}</td>
                 <td>{sim.fechaFin}</td>
-                <td>{sim.tasa}</td>
+                <td>{sim.tasa * 100}%</td>
                 <td className="ActionButtons">
                   <button className="btn btn-warning" onClick={() => handleEditClick(sim.idSimulacion)} >
                     <i className="bi bi-pencil"></i>
                   </button>
-                  <button className="btn btn-danger ms-2">
+                  <button className="btn btn-danger ms-2" onClick={() => handleDeleteClick(sim.idSimulacion)}>
                     <i className="bi bi-trash"></i>
                   </button>
                 </td>
@@ -88,7 +119,7 @@ function SimulationsList() {
       {/* Botón fijo con respecto a la aplicación */}
       <button
         className="btn btn-primary rounded-circle position-fixed"
-        onClick={() => handleAddClick()} 
+        onClick={() => handleAddClick()}
         style={{ width: '60px', height: '60px', bottom: '100px', right: '40px' }}
       >
         <i className="bi bi-plus"></i>
